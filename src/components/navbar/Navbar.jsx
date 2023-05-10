@@ -38,12 +38,9 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/products/1">contact</Link>
-            </li>
+            </li>           
             <li>
-              <Link to="/products/1">stores</Link>
-            </li>
-            <li>
-              <Link to="/products/1">
+              <Link to="/sign-in">
                 <PersonOutlineIcon className="icon" />
               </Link>
             </li>

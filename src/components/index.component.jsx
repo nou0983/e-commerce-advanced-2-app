@@ -5,10 +5,12 @@ import Footer from "./footer/Footer";
 import Navbar from "./navbar/Navbar";
 import ProductImgContainer from "./productImgContainer/ProductImgContainer";
 import ProductsContainer from "./productsContainer/ProductsContainer";
+import AuthForm from "./authForm/AuthForm";
 import SingleProduct from "./singleProduct/SingleProduct";
 import Slider from "./slider/Slider";
 import Spinner from "./spinner/Spinner";
 import Subscribe from "./subscribe/Subscribe";
+
 
 export {
   Footer,
@@ -22,4 +24,5 @@ export {
   ProductImgContainer,
   SingleProduct,
   Spinner,
+  AuthForm,
 };

@@ -1,8 +1,7 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import { Home, Products, Product, Checkout } from "./pages/index.page";
+import { Home, Products, Product, Checkout, SignIn } from "./pages/index.page";
 import { Navbar, Footer } from "./components/index.component";
 import Wrapper from "./index.styles";
-
 
 const SharedLayout = () => {
   return (
@@ -34,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/sign-in",
+        element: <SignIn />,
       },
     ],
   },
