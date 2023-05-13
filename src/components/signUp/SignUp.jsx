@@ -6,6 +6,7 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase.utils";
 import { useUserCOntext } from "../../contexts/UserContext";
+import Alert from "@mui/material/Alert";
 
 const SignUp = () => {
   const INITIAL_INPUT_VALUES = {
@@ -18,7 +19,8 @@ const SignUp = () => {
   const { displayName, email, password, confirmPassword } = inputValues;
 
   const navigate = useNavigate();
-  const { setCurrentUser } = useUserCOntext();
+  const { setCurrentUser, error, isLoading, setError, setLoading } =
+    useUserCOntext();
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -27,9 +29,11 @@ const SignUp = () => {
 
   const signUpHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (password !== confirmPassword) {
-      alert("your passwords don't match");
+      setError("Your passwords don't match");
+      setLoading(false);
       return;
     }
 
@@ -43,11 +47,17 @@ const SignUp = () => {
       setInputValues(INITIAL_INPUT_VALUES);
       navigate("/");
     } catch (error) {
-      console.log(error);
+      console.log(error.code);
       if (error.code === "auth/email-already-in-use") {
-        alert("cannot create account, email already in use!");
+        setError("Cannot create account, email already in use!");
+      } else if (error.code === "auth/weak-password") {
+        setError("Your password is too short/weak");
+      } else {
+        setError("There was an error creating your account!");
       }
     }
+
+    setLoading(false);
   };
 
   return (
@@ -90,12 +100,16 @@ const SignUp = () => {
         value={confirmPassword}
         onChangeHandler={onChangeHandler}
       />
-
       <div className="btn-inner-container">
-        <button type="submit" className="btn">
+        <button type="submit" className="btn" disabled={isLoading}>
           sign up
         </button>
       </div>
+      {error && (
+        <Alert variant="outlined" severity="error" className="alert">
+          {error}
+        </Alert>
+      )}
     </form>
   );
 };

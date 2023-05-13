@@ -58,10 +58,19 @@ const Wrapper = styled.section`
     opacity: 0.8;
   }
 
+  .btn:disabled {
+    opacity: 0.8;
+  }
+
   .btn-inner-container {
     display: flex;
     justify-content: space-between;
     margin-top: 3rem;
+  }
+
+  .alert {
+    font-size: 1.6rem;
+    margin-top: 2rem;
   }
 `;
 

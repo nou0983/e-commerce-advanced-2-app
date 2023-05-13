@@ -5,6 +5,7 @@ import {
   createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase.utils";
+import Alert from "@mui/material/Alert";
 import Wrapper from "./signIn.styles";
 import { useNavigate } from "react-router-dom";
 import { useUserCOntext } from "../../contexts/UserContext";
@@ -18,7 +19,8 @@ const AuthForm = () => {
   const { username, password } = inputValues;
 
   const navigate = useNavigate();
-  const { setCurrentUser } = useUserCOntext();
+  const { setCurrentUser, error, isLoading, setError, setLoading } =
+    useUserCOntext();
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -27,6 +29,7 @@ const AuthForm = () => {
 
   const signInHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const userAuth = await signInAuthUserWithEmailAndPassword(
@@ -38,19 +41,27 @@ const AuthForm = () => {
       navigate("/");
     } catch (error) {
       if (error.code === "auth/wrong-password") {
-        alert("incorrect password for email");
+        setError("Incorrect password for email");
       } else if (error.code === "auth/user-not-found") {
-        alert("no associated with this email");
+        setError("No associated with this email");
+      } else {
+        setError("There was an error signing in!");
       }
     }
+
+    setLoading(false);
   };
 
   const signInWithGoogleHandler = async () => {
+    setLoading(true);
+
     const userAuth = await signInWithGooglePopup();
     await createUserDocumentFromAuth(userAuth);
     setCurrentUser(userAuth);
     setInputValues(INITIAL_INPUT_VALUES);
     navigate("/");
+
+    setLoading(false);
   };
 
   return (
@@ -76,13 +87,23 @@ const AuthForm = () => {
         onChangeHandler={onChangeHandler}
       />
       <div className="btn-inner-container">
-        <button type="submit" className="btn">
+        <button type="submit" className="btn" disabled={isLoading}>
           sign in
         </button>
-        <button type="button" className="btn" onClick={signInWithGoogleHandler}>
+        <button
+          type="button"
+          className="btn"
+          disabled={isLoading}
+          onClick={signInWithGoogleHandler}
+        >
           sign in with google popup
         </button>
       </div>
+      {error && (
+        <Alert variant="outlined" severity="error" className="alert">
+          {error}
+        </Alert>
+      )}
     </Wrapper>
   );
 };
