@@ -3,8 +3,11 @@ import { initializeApp } from "firebase/app";
 import {
   getAuth,
   signInWithPopup,
-  signInWithRedirect,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
@@ -27,18 +30,46 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-const provider = new GoogleAuthProvider();
-provider.setCustomParameters({
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
   prompt: "select_account",
 });
 
 export const auth = getAuth(app);
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, googleProvider);
 
 export const db = getFirestore(app);
-export const createUserDocumentFromAuth = async (userAuth) => {
-  const userDocRef = await doc(db, "users", userAuth.user.uid);
+export const createUserDocumentFromAuth = async (
+  userAuth,
+  additionalData = {}
+) => {
+  const { uid, displayName, email } = userAuth.user;
+  const userDocRef = await doc(db, "users", uid);
   const userSnapshot = await getDoc(userDocRef);
 
-  console.log(userSnapshot.exists());
+  if (!userSnapshot.exists()) {
+    const newUserDoc = {
+      displayName,
+      email,
+      createdAt: new Date(),
+      ...additionalData,
+    };
+    await setDoc(userDocRef, newUserDoc);
+  }
 };
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+  return await createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+  return await signInWithEmailAndPassword(auth, email, password);
+};
+
+export const signOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);

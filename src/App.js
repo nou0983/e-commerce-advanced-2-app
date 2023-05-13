@@ -1,5 +1,13 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import { Home, Products, Product, Checkout, SignIn } from "./pages/index.page";
+import {
+  Home,
+  Products,
+  Product,
+  Checkout,
+  Authentication,
+  Profile,
+  Private,
+} from "./pages/index.page";
 import { Navbar, Footer } from "./components/index.component";
 import Wrapper from "./index.styles";
 
@@ -35,8 +43,16 @@ const router = createBrowserRouter([
         element: <Checkout />,
       },
       {
-        path: "/sign-in",
-        element: <SignIn />,
+        path: "/authentication",
+        element: <Authentication />,
+      },
+      {
+        path: "/profile",
+        element: (
+          <Private>
+            <Profile />
+          </Private>
+        ),
       },
     ],
   },

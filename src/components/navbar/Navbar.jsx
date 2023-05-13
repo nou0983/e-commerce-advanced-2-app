@@ -4,9 +4,11 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Link } from "react-router-dom";
 import Wrapper from "./navbar.styles";
 import { useState } from "react";
+import { useUserCOntext } from "../../contexts/UserContext";
 
 const Navbar = () => {
   const [showCart, setShowCart] = useState(false);
+  const { currentUser } = useUserCOntext();
 
   return (
     <Wrapper>
@@ -38,11 +40,17 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/products/1">contact</Link>
-            </li>           
+            </li>
             <li>
-              <Link to="/sign-in">
-                <PersonOutlineIcon className="icon" />
-              </Link>
+              {currentUser ? (
+                <Link to="/profile">
+                  <PersonOutlineIcon className="icon" />
+                </Link>
+              ) : (
+                <Link to="/authentication">
+                  <PersonOutlineIcon className="icon" />
+                </Link>
+              )}           
             </li>
             <li>
               <button type="button" onClick={() => setShowCart(!showCart)}>

@@ -46,6 +46,23 @@ const Wrapper = styled.section`
     margin-bottom: 1rem;
     color: #555;
   }
+
+  .btn {
+    border-radius: 2px;
+    padding: 1.5rem 3rem;
+    background-color: #2879fe;
+    color: #fff;
+  }
+
+  .btn:hover {
+    opacity: 0.8;
+  }
+
+  .btn-inner-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+  }
 `;
 
 export default Wrapper;
