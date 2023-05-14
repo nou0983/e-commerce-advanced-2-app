@@ -52,6 +52,8 @@ const Wrapper = styled.section`
     padding: 1.5rem 3rem;
     background-color: #2879fe;
     color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
   }
 
   .btn:hover {

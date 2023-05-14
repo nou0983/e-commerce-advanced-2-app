@@ -8,10 +8,17 @@ import {
   Profile,
   Private,
 } from "./pages/index.page";
-import { Navbar, Footer } from "./components/index.component";
+import { Navbar, Footer, Spinner } from "./components/index.component";
 import Wrapper from "./index.styles";
+import { useProductsContext } from "./contexts/ProductsContext";
 
 const SharedLayout = () => {
+  const { products } = useProductsContext();
+
+  if (products.length <= 0) {
+    return <Spinner size="large" />;
+  }
+
   return (
     <Wrapper>
       <Navbar />

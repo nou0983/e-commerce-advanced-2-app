@@ -1,6 +1,6 @@
 import Wrapper from "./formInput.styles";
 
-const FormInput = ({ type, label, name, id, value, placeholder, onChangeHandler }) => {
+const FormInput = ({ type, label, name, id, value, placeholder, onChangeHandler, disabled }) => {
   return (
     <Wrapper>
       <label htmlFor={id}>{label}</label>
@@ -10,6 +10,7 @@ const FormInput = ({ type, label, name, id, value, placeholder, onChangeHandler 
         id={id}
         value={value}
         placeholder={placeholder}
+        disabled={disabled}
         required
         onChange={onChangeHandler}
       />

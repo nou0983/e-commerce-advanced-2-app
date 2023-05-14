@@ -18,6 +18,7 @@ import {
   writeBatch,
   query,
   getDocs,
+  updateDoc,
 } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -78,6 +79,11 @@ export const getCollectionAndDocuments = async (collectionKey) => {
   }, {});
 
   return products;
+};
+
+export const updateDocument = async (collectionKey, docName, payload) => {
+  const docRef = await doc(db, collectionKey, docName);
+  await updateDoc(docRef, payload);
 };
 
 export const getDocument = async (collectionKey, docName) => {

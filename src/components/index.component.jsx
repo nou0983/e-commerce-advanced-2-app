@@ -12,6 +12,7 @@ import Subscribe from "./subscribe/Subscribe";
 import SignIn from "./signIn/SignIn";
 import SignUp from "./signUp/SignUp";
 import FormInput from "./formInput/FormInput";
+import ProfileEditForm from "./profileEditForm/ProfileEditForm";
 
 export {
   Footer,
@@ -28,4 +29,5 @@ export {
   SignIn,
   SignUp,
   FormInput,
+  ProfileEditForm,
 };

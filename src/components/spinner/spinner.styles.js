@@ -15,6 +15,11 @@ const Wrapper = styled.div`
     animation: loadingIcon 1s linear infinite;
   }
 
+  .spinner-large {
+    width: 6rem;
+    height: 6rem;
+  }
+
   @keyframes loadingIcon {
     100% {
       transform: rotate(360deg);
