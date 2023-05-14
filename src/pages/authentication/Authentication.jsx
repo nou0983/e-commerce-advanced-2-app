@@ -2,11 +2,11 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { SignUp, SignIn } from "../../components/index.component";
 import Wrapper from "./authentication.styles";
-import { useUserCOntext } from "../../contexts/UserContext";
+import { useUserContext } from "../../contexts/UserContext";
 
 const Authentication = () => {
   const [authMode, setAuthMode] = useState("sign in");
-  const { currentUser } = useUserCOntext();
+  const { currentUser } = useUserContext();
 
   if (currentUser) {
     return <Navigate to="/profile" />;

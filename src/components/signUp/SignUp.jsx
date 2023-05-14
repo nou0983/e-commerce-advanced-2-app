@@ -4,8 +4,9 @@ import { FormInput } from "../index.component";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
+  getDocument,
 } from "../../utils/firebase.utils";
-import { useUserCOntext } from "../../contexts/UserContext";
+import { useUserContext } from "../../contexts/UserContext";
 import Alert from "@mui/material/Alert";
 
 const SignUp = () => {
@@ -20,11 +21,27 @@ const SignUp = () => {
 
   const navigate = useNavigate();
   const { setCurrentUser, error, isLoading, setError, setLoading } =
-    useUserCOntext();
+    useUserContext();
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInputValues({ ...inputValues, [name]: value });
+  };
+
+  const setCurrentUserHandler = async (userAuth) => {
+    await createUserDocumentFromAuth(userAuth, {
+      displayName,
+    });
+
+    const userInfo = await getDocument('users', userAuth.user.uid);
+    const currentUser = {
+      userAuth,
+      userInfo,
+    };   
+
+    setCurrentUser(currentUser);
+    setInputValues(INITIAL_INPUT_VALUES);
+    navigate("/");
   };
 
   const signUpHandler = async (e) => {
@@ -42,12 +59,9 @@ const SignUp = () => {
         email,
         password
       );
-      await createUserDocumentFromAuth(userAuth, { displayName });
-      setCurrentUser(userAuth);
-      setInputValues(INITIAL_INPUT_VALUES);
-      navigate("/");
+      await setCurrentUserHandler(userAuth);
     } catch (error) {
-      console.log(error.code);
+      console.log(error);
       if (error.code === "auth/email-already-in-use") {
         setError("Cannot create account, email already in use!");
       } else if (error.code === "auth/weak-password") {

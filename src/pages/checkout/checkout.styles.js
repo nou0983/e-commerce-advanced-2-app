@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   form {
     width: 30vw;   
-    margin: 20vh auto;
+    margin: 10vh auto 20vh;
     min-width: 500px;
     align-self: center;
     box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
@@ -11,6 +11,10 @@ const Wrapper = styled.div`
       0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
     border-radius: 7px;
     padding: 40px;
+  }
+
+  h2.heading-secondary {
+    margin-bottom: 2rem;
   }
 
   #payment-message {

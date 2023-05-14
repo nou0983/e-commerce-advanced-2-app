@@ -4,11 +4,12 @@ import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
+  getDocument,
 } from "../../utils/firebase.utils";
 import Alert from "@mui/material/Alert";
 import Wrapper from "./signIn.styles";
 import { useNavigate } from "react-router-dom";
-import { useUserCOntext } from "../../contexts/UserContext";
+import { useUserContext } from "../../contexts/UserContext";
 
 const AuthForm = () => {
   const INITIAL_INPUT_VALUES = {
@@ -20,11 +21,24 @@ const AuthForm = () => {
 
   const navigate = useNavigate();
   const { setCurrentUser, error, isLoading, setError, setLoading } =
-    useUserCOntext();
+    useUserContext();
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInputValues({ ...inputValues, [name]: value });
+  };
+
+  const setCurrentUserHandler = async (userAuth) => {
+    await createUserDocumentFromAuth(userAuth);
+    const userInfo = await getDocument("users", userAuth.user.uid);
+    const currentUser = {
+      userAuth,
+      userInfo,
+    };
+
+    setCurrentUser(currentUser);
+    setInputValues(INITIAL_INPUT_VALUES);
+    navigate("/");
   };
 
   const signInHandler = async (e) => {
@@ -36,9 +50,7 @@ const AuthForm = () => {
         username,
         password
       );
-      setCurrentUser(userAuth);
-      setInputValues(INITIAL_INPUT_VALUES);
-      navigate("/");
+      await setCurrentUserHandler(userAuth);
     } catch (error) {
       if (error.code === "auth/wrong-password") {
         setError("Incorrect password for email");
@@ -56,10 +68,7 @@ const AuthForm = () => {
     setLoading(true);
 
     const userAuth = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(userAuth);
-    setCurrentUser(userAuth);
-    setInputValues(INITIAL_INPUT_VALUES);
-    navigate("/");
+    await setCurrentUserHandler(userAuth);
 
     setLoading(false);
   };

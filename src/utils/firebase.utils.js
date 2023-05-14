@@ -9,7 +9,16 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+  query,
+  getDocs,
+} from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -40,6 +49,46 @@ export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
 
 export const db = getFirestore(app);
+
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = await collection(db, collectionKey);
+  const batch = writeBatch(db);
+
+  objectsToAdd.forEach((obj) => {
+    const docRef = doc(collectionRef, obj.title.toLowerCase());
+    batch.set(docRef, obj);
+  });
+
+  await batch.commit();
+  console.log("done");
+};
+
+export const getCollectionAndDocuments = async (collectionKey) => {
+  const collectionRef = await collection(db, collectionKey);
+  const q = await query(collectionRef);
+  const querySnapshot = await getDocs(q);
+
+  const products = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+
+  return products;
+};
+
+export const getDocument = async (collectionKey, docName) => {
+  const docRef = await doc(db, collectionKey, docName);
+  const docSnapshot = await getDoc(docRef);
+
+  if (docSnapshot.exists()) {
+    return docSnapshot.data();
+  }
+};
+
 export const createUserDocumentFromAuth = async (
   userAuth,
   additionalData = {}
@@ -50,9 +99,11 @@ export const createUserDocumentFromAuth = async (
 
   if (!userSnapshot.exists()) {
     const newUserDoc = {
+      createdAt: new Date(),
       displayName,
       email,
-      createdAt: new Date(),
+      address: "",
+      mobile: "",
       ...additionalData,
     };
     await setDoc(userDocRef, newUserDoc);

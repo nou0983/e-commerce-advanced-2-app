@@ -4,11 +4,14 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Link } from "react-router-dom";
 import Wrapper from "./navbar.styles";
 import { useState } from "react";
-import { useUserCOntext } from "../../contexts/UserContext";
+import { useUserContext } from "../../contexts/UserContext";
+import { useProductsContext } from "../../contexts/ProductsContext";
 
 const Navbar = () => {
   const [showCart, setShowCart] = useState(false);
-  const { currentUser } = useUserCOntext();
+  const { currentUser } = useUserContext();
+  const { products } = useProductsContext();
+  const categories = Object.keys(products);
 
   return (
     <Wrapper>
@@ -16,31 +19,19 @@ const Navbar = () => {
         <div className="nav-header">
           <ul className="product-list">
             <li>
-              <Link to="/products/men">men</Link>
+              <Link to="/" className="logo">
+                lamastore
+              </Link>
             </li>
-            <li>
-              <Link to="/products/women">women</Link>
-            </li>
-            <li>
-              <Link to="/products/children">children</Link>
-            </li>
-            <li>
-              <Link to="/products/accessories">accessories</Link>
-            </li>
+            {categories.map((category) => {
+              return (
+                <li key={category}>
+                  <Link to={`products/${category}`}>{category}</Link>
+                </li>
+              );
+            })}
           </ul>
-          <Link to="/" className="logo">
-            lamastore
-          </Link>
           <ul className="page-list">
-            <li>
-              <Link to="/">home</Link>
-            </li>
-            <li>
-              <Link to="/products/1">about</Link>
-            </li>
-            <li>
-              <Link to="/products/1">contact</Link>
-            </li>
             <li>
               {currentUser ? (
                 <Link to="/profile">
@@ -50,7 +41,7 @@ const Navbar = () => {
                 <Link to="/authentication">
                   <PersonOutlineIcon className="icon" />
                 </Link>
-              )}           
+              )}
             </li>
             <li>
               <button type="button" onClick={() => setShowCart(!showCart)}>

@@ -7,6 +7,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { Spinner } from "../index.component";
+import { useUserContext } from "../../contexts/UserContext";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -15,6 +16,8 @@ const CheckoutForm = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const {currentUser} = useUserContext();
 
   const navigate = useNavigate();
 
@@ -100,12 +103,15 @@ const CheckoutForm = () => {
     layout: "tabs",
   };
 
-  if (!stripe) {
+  if (!stripe || !currentUser) {
     return <Spinner />;
   }
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
+      <h2 className="heading-secondary">
+        Hello, {currentUser.userInfo.displayName}
+      </h2>
       <LinkAuthenticationElement
         id="link-authentication-element"
         onChange={onChangeHandler}

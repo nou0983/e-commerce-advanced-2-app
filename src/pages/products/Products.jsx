@@ -7,7 +7,6 @@ import Wrapper from "./products.styles";
 
 const Products = () => {
   const { category } = useParams();
-  console.log(category);
 
   return (
     <Wrapper className="container-large">
