@@ -7,19 +7,18 @@ const Wrapper = styled.nav`
     width: 90%;
     max-width: 1800px;
     margin: auto;
-    position: relative;
+
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
   }
 
   .nav-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  ul {
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
   }
 
   li {

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.li`
-  flex-basis: 20%;
+  flex-basis: 23%;
   letter-spacing: 1px;
 
   .img-container {
@@ -26,18 +26,11 @@ const Wrapper = styled.li`
     z-index: 1;
   }
 
-  h4 {
-    margin: 1rem 0;
-  }
-
   h5 {
+    margin-top: 1rem;
     font-size: 1.8rem;
-  }
-
-  .old-price {
-    color: #999;
-    text-decoration: line-through;
-    margin-right: 1rem;
+    display: flex;
+    justify-content: space-between;
   }
 
   .new-tag {

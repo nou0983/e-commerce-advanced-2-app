@@ -38,10 +38,10 @@ const Wrapper = styled.div`
   }
 
   button {
+    border: none;
     outline: none;
-    border: 2px solid #999;
     padding: 1rem;
-    color: #111;
+    color: #ccc;
   }
 
   button:first-of-type {
@@ -49,7 +49,7 @@ const Wrapper = styled.div`
   }
 
   svg {
-    font-size: 3.5rem;
+    font-size: 5rem;
   }
 `;
 

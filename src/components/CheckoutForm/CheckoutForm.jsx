@@ -8,6 +8,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { Spinner } from "../index.component";
 import { useUserContext } from "../../contexts/UserContext";
+import { useProductsContext } from "../../contexts/ProductsContext";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -17,7 +18,8 @@ const CheckoutForm = () => {
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const {currentUser} = useUserContext();
+  const { currentUser } = useUserContext();
+  const { clearCart } = useProductsContext();
 
   const navigate = useNavigate();
 
@@ -27,6 +29,7 @@ const CheckoutForm = () => {
         navigate("/");
       }, 5000);
     }
+    // eslint-disable-next-line
   }, [message]);
 
   useEffect(() => {
@@ -96,6 +99,7 @@ const CheckoutForm = () => {
       setMessage({ type: "fail", text: "An unexpected error occurred." });
     }
 
+    clearCart();
     setIsLoading(false);
   };
 

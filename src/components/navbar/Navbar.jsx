@@ -2,15 +2,14 @@ import CartModal from "../cartModal/CartModal";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Link } from "react-router-dom";
-import Wrapper from "./navbar.styles";
-import { useState } from "react";
 import { useUserContext } from "../../contexts/UserContext";
 import { useProductsContext } from "../../contexts/ProductsContext";
+import Wrapper from "./navbar.styles";
 
 const Navbar = () => {
-  const [showCart, setShowCart] = useState(false);
   const { currentUser } = useUserContext();
-  const { products } = useProductsContext();
+  const { products, isCartOpen, toggleCart, totalQuantity } =
+    useProductsContext();
   const categories = Object.keys(products);
 
   return (
@@ -44,15 +43,15 @@ const Navbar = () => {
               )}
             </li>
             <li>
-              <button type="button" onClick={() => setShowCart(!showCart)}>
+              <button type="button" onClick={() => toggleCart(!isCartOpen)}>
                 <ShoppingCartOutlinedIcon className="icon" />
-                <span>0</span>
+                <span>{totalQuantity}</span>
               </button>
             </li>
           </ul>
         </div>
-        {showCart && <CartModal />}
       </div>
+      {isCartOpen && <CartModal />}
     </Wrapper>
   );
 };

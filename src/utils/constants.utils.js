@@ -1,42 +1,3 @@
-const featuredProducts = [
-  {
-    id: 1,
-    img: "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    img2: "https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Long Sleeve Graphic T-shirt",
-    isNew: true,
-    oldPrice: 19,
-    price: 12,
-  },
-  {
-    id: 2,
-    img: "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    img2: "https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Long Sleeve Graphic T-shirt",
-    isNew: true,
-    oldPrice: 19,
-    price: 12,
-  },
-  {
-    id: 3,
-    img: "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    img2: "https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Long Sleeve Graphic T-shirt",
-    isNew: false,
-    oldPrice: 19,
-    price: 12,
-  },
-  {
-    id: 4,
-    img: "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    img2: "https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    title: "Long Sleeve Graphic T-shirt",
-    isNew: false,
-    oldPrice: 19,
-    price: 12,
-  },
-];
-
 const PRODUCTS = [
   {
     title: "Hats",
@@ -46,12 +7,16 @@ const PRODUCTS = [
         name: "Brown Brim",
         imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
         price: 25,
+        onSale: true,
+        oldPrice: 30,
       },
       {
         id: 2,
         name: "Blue Beanie",
         imageUrl: "https://i.ibb.co/ypkgK0X/blue-beanie.png",
         price: 18,
+        onSale: true,
+        oldPrice: 22,
       },
       {
         id: 3,
@@ -105,18 +70,24 @@ const PRODUCTS = [
         name: "Adidas NMD",
         imageUrl: "https://i.ibb.co/0s3pdnc/adidas-nmd.png",
         price: 220,
+        onSale: true,
+        oldPrice: 300,
       },
       {
         id: 11,
         name: "Adidas Yeezy",
         imageUrl: "https://i.ibb.co/dJbG1cT/yeezy.png",
         price: 280,
+        onSale: true,
+        oldPrice: 320,
       },
       {
         id: 12,
         name: "Black Converse",
         imageUrl: "https://i.ibb.co/bPmVXyP/black-converse.png",
         price: 110,
+        onSale: true,
+        oldPrice: 130,
       },
       {
         id: 13,
@@ -158,6 +129,8 @@ const PRODUCTS = [
         name: "Black Jean Shearling",
         imageUrl: "https://i.ibb.co/XzcwL5s/black-shearling.png",
         price: 125,
+        onSale: true,
+        oldPrice: 130,
       },
       {
         id: 19,
@@ -193,12 +166,16 @@ const PRODUCTS = [
         name: "Blue Tanktop",
         imageUrl: "https://i.ibb.co/7CQVJNm/blue-tank.png",
         price: 25,
+        onSale: true,
+        oldPrice: 30,
       },
       {
         id: 24,
         name: "Floral Blouse",
         imageUrl: "https://i.ibb.co/4W2DGKm/floral-blouse.png",
         price: 20,
+        onSale: true,
+        oldPrice: 35,
       },
       {
         id: 25,
@@ -240,18 +217,24 @@ const PRODUCTS = [
         name: "Camo Down Vest",
         imageUrl: "https://i.ibb.co/xJS0T3Y/camo-vest.png",
         price: 325,
+        onSale: true,
+        oldPrice: 350,
       },
       {
         id: 31,
         name: "Floral T-shirt",
         imageUrl: "https://i.ibb.co/qMQ75QZ/floral-shirt.png",
         price: 20,
+        onSale: true,
+        oldPrice: 50,
       },
       {
         id: 32,
         name: "Black & White Longsleeve",
         imageUrl: "https://i.ibb.co/55z32tw/long-sleeve.png",
         price: 25,
+        onSale: true,
+        oldPrice: 30,
       },
       {
         id: 33,
@@ -275,4 +258,4 @@ const PRODUCTS = [
   },
 ];
 
-export { featuredProducts, PRODUCTS };
+export { PRODUCTS };

@@ -1,14 +1,11 @@
 import styled from "styled-components";
 
 const Wrapper = styled.section`
-  display: flex;
+  min-height: 60vh;
 
-  article {
-    flex: 1;
-  }
-
-  .container {
-    padding-top: 0;
+  .inner-container {
+    width: 70%;
+    margin: 5rem auto;
   }
 `;
 

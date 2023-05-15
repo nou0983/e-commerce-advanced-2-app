@@ -7,6 +7,7 @@ import {
   Authentication,
   Profile,
   Private,
+  Cart,
 } from "./pages/index.page";
 import { Navbar, Footer, Spinner } from "./components/index.component";
 import Wrapper from "./index.styles";
@@ -42,8 +43,16 @@ const router = createBrowserRouter([
         element: <Products />,
       },
       {
-        path: "/product/:productId",
+        path: "/product/:category/:productId",
         element: <Product />,
+      },
+      {
+        path: "/authentication",
+        element: <Authentication />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/checkout",
@@ -53,10 +62,7 @@ const router = createBrowserRouter([
           </Private>
         ),
       },
-      {
-        path: "/authentication",
-        element: <Authentication />,
-      },
+
       {
         path: "/profile",
         element: (

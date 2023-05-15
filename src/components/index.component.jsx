@@ -4,7 +4,6 @@ import FilterContainer from "./filterContainer/FilterContainer";
 import Footer from "./footer/Footer";
 import Navbar from "./navbar/Navbar";
 import ProductImgContainer from "./productImgContainer/ProductImgContainer";
-import ProductsContainer from "./productsContainer/ProductsContainer";
 import SingleProduct from "./singleProduct/SingleProduct";
 import Slider from "./slider/Slider";
 import Spinner from "./spinner/Spinner";
@@ -13,6 +12,9 @@ import SignIn from "./signIn/SignIn";
 import SignUp from "./signUp/SignUp";
 import FormInput from "./formInput/FormInput";
 import ProfileEditForm from "./profileEditForm/ProfileEditForm";
+import CartContainer from './cartContainer/CartContainer'
+import TotalContainer from "./totalContainer/TotalContainer";
+
 
 export {
   Footer,
@@ -22,7 +24,6 @@ export {
   Categories,
   Subscribe,
   FilterContainer,
-  ProductsContainer,
   ProductImgContainer,
   SingleProduct,
   Spinner,
@@ -30,4 +31,6 @@ export {
   SignUp,
   FormInput,
   ProfileEditForm,
+  CartContainer,
+  TotalContainer,
 };

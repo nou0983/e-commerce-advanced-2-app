@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 
     img {
       cursor: pointer;
+      height: 10rem;
     }
 
     img:not(:last-of-type) {

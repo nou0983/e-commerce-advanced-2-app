@@ -1,8 +1,8 @@
 import ProductCard from "../productCard/ProductCard";
-import { featuredProducts } from "../../utils/constants.utils";
-import Wrapper from "./featuredProducts.styles";;
+import Wrapper from "./featuredProducts.styles";
 
-const FeaturedProducts = ({ heading, text }) => {
+const FeaturedProducts = ({ heading, text, products, category }) => {
+
   return (
     <Wrapper className="container">
       <div className="header">
@@ -10,8 +10,8 @@ const FeaturedProducts = ({ heading, text }) => {
         <p>{text}</p>
       </div>
       <ul className="products-list">
-        {featuredProducts.map((featuredProduct) => {
-          return <ProductCard key={featuredProduct.id} {...featuredProduct} />;
+        {products.map((product) => {
+          return <ProductCard key={product.id} category={category} {...product} />;
         })}
       </ul>
     </Wrapper>

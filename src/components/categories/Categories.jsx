@@ -12,19 +12,19 @@ const Categories = () => {
       img: "https://images.pexels.com/photos/2036646/pexels-photo-2036646.jpeg?auto=compress&cs=tinysrgb&w=1600",
     },
     {
-      title: "new season",
+      title: "mens",
       img: "https://images.pexels.com/photos/1813947/pexels-photo-1813947.jpeg?auto=compress&cs=tinysrgb&w=1600",
     },
     {
-      title: "men",
+      title: "hats",
       img: "https://images.pexels.com/photos/1192609/pexels-photo-1192609.jpeg?auto=compress&cs=tinysrgb&w=1600",
     },
     {
-      title: "accessories",
+      title: "jackets",
       img: "https://images.pexels.com/photos/2703202/pexels-photo-2703202.jpeg?auto=compress&cs=tinysrgb&w=1600",
     },
     {
-      title: "shoes",
+      title: "sneakers",
       img: "https://images.pexels.com/photos/1159670/pexels-photo-1159670.jpeg?auto=compress&cs=tinysrgb&w=1600",
     },
   ];
@@ -37,7 +37,7 @@ const Categories = () => {
         })}
       </div>
       <div className="col">
-        <Category key="2" {...categories[2]} high={true} />
+        <Category {...categories[2]} high={true} />
       </div>
       <div className="col col-large">
         {categories.slice(3).map((category, index) => {

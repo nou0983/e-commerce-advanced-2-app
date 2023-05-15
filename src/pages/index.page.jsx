@@ -5,6 +5,15 @@ import Products from "./products/Products";
 import Authentication from "./authentication/Authentication";
 import Profile from "./profile/Profile";
 import Private from "./private/Private";
+import Cart from "./cart/Cart"
 
-
-export { Home, Products, Product, Checkout, Authentication, Profile, Private };
+export {
+  Home,
+  Products,
+  Product,
+  Checkout,
+  Authentication,
+  Profile,
+  Private,
+  Cart,
+};

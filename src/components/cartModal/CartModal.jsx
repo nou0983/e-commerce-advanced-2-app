@@ -1,11 +1,25 @@
-import Wrapper from "./cartModal.styles"
+import { useProductsContext } from "../../contexts/ProductsContext";
+import { Link } from "react-router-dom";
+import CartModalItem from "../cartModalItem/CartModalItem";
+import Wrapper from "./cartModal.styles";
 
 const CartModal = () => {
+  const { cart, toggleCart } = useProductsContext();
+
   return (
     <Wrapper>
-      <h3 className="heading-tertiary">your cart</h3>
+      {cart.length <= 0 ? (
+        <li className="empty-list">your cart is empty</li>
+      ) : (
+        cart.map((item) => {
+          return <CartModalItem key={item.name} {...item} />;
+        })
+      )}
+      <Link to="/cart" className="btn" onClick={() => toggleCart(false)}>
+        go to your cart
+      </Link>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default CartModal
+export default CartModal;

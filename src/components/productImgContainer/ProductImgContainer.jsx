@@ -1,11 +1,19 @@
 import { useState } from "react";
 import Wrapper from "./productImgContainer.styles";
+import { useParams } from "react-router-dom";
+import { useProductsContext } from "../../contexts/ProductsContext";
 
 const ProductImgContainer = () => {
+  const { category, productId } = useParams();
+  const { products } = useProductsContext();
+  const currentProduct = products[category].find(
+    (item) => item.id === Number(productId)
+  );
+
   const images = [
     {
       id: 1,
-      url: "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      url: currentProduct.imageUrl,
     },
     {
       id: 2,

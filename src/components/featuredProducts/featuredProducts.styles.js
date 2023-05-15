@@ -9,11 +9,9 @@ const Wrapper = styled.div`
     align-items: center;
     margin-bottom: 4rem;
   }
-  
 
   h2 {
     flex-basis: 30%;
-
   }
 
   p {
@@ -22,11 +20,9 @@ const Wrapper = styled.div`
 
   .products-list {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    gap: 3%;
+    gap: 4rem 2.6%;
   }
 `;
-
 
 export default Wrapper;

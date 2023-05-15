@@ -3,6 +3,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
 import Wrapper from "./checkout.styles";
+import { useProductsContext } from "../../contexts/ProductsContext";
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
@@ -11,13 +12,14 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 const Checkout = () => {
   const [clientSecret, setClientSecret] = useState("");
+  const { totalPrice } = useProductsContext();
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     fetch("/.netlify/functions/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: 3000 }),
+      body: JSON.stringify({ amount: (totalPrice + 5) * 100 }),
     })
       .then((res) => {
         if (!res.ok) {
