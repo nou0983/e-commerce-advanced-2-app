@@ -8,7 +8,8 @@ const Wrapper = styled.nav`
     max-width: 1800px;
     margin: auto;
 
-    ul {
+    .product-list,
+    .page-list {
       display: flex;
       align-items: center;
       gap: 2.5rem;
@@ -18,6 +19,12 @@ const Wrapper = styled.nav`
   .nav-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-sub-header {
+    display: flex;
+    gap: 3rem;
     align-items: center;
   }
 
@@ -54,6 +61,68 @@ const Wrapper = styled.nav`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .nav-btn-container {
+    display: none;
+  }
+
+  .modal-container {
+    position: relative;
+  }
+
+  /* *************************************** */
+  /* Media Style */
+  /* *************************************** */
+  /* Default work done at 2560px */
+
+  /* Extra Large 1729px ~ 1920px */
+  @media only screen and (max-width: 1920px) {
+  }
+
+  /* Large laptop to Desktop: 1324px ~ 1728px */
+  @media only screen and (max-width: 1728px) {
+  }
+
+  /* Large Tablet to Laptop: 848px ~ 1323px */
+  @media only screen and (max-width: 1323px) {
+  }
+
+  /* Large Phone to Tablet: 403px ~ 847px */
+  @media only screen and (max-width: 847px) {
+    .nav-container {
+      ul.product-list {
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        flex-direction: column;
+        z-index: 5;
+        background-color: #fff;
+        width: 100vw;
+        padding: 2rem 0;
+        visibility: hidden;
+      }
+
+      ul.nav-show {
+        visibility: visible;
+      }
+    }
+
+    .nav-btn-container {
+      display: inline-block;
+
+      .nav-btn {
+        cursor: pointer;
+      }
+
+      svg {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  /* Extra small phone to Phone: 0px ~ 402px */
+  @media only screen and (max-width: 402px) {
   }
 `;
 

@@ -4,7 +4,7 @@ const Wrapper = styled.div`
   position: relative;
 
   .img-container {
-    height: 90vh;
+    height: 65vh;
     position: relative;
     overflow: hidden;
   }

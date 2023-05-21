@@ -7,7 +7,7 @@ const Wrapper = styled.section`
 
   a {
     text-decoration: none;
-    color: inherit;   
+    color: inherit;
   }
 
   button {
@@ -29,7 +29,7 @@ const Wrapper = styled.section`
 
   .container-large {
     width: 90%;
-    max-width: 2500px;
+    max-width: 2000px;
     margin: 3rem auto;
   }
 
@@ -73,6 +73,66 @@ const Wrapper = styled.section`
   .alert {
     font-size: 1.6rem;
     margin-top: 2rem;
+  }
+
+  /* *************************************** */
+  /* Media Style */
+  /* *************************************** */
+  /* Default work done at 2560px */
+
+  /* Extra Large 1729px ~ 1920px */
+  @media only screen and (max-width: 1920px) {
+    html {
+      font-size: 58%;
+    }
+  }
+
+  /* Large laptop to Desktop: 1324px ~ 1728px */
+  @media only screen and (max-width: 1728px) {
+    html {
+      font-size: 56.5%;
+    }
+
+    .container {
+      width: 90%;
+    }
+  }
+
+  /* Large Tablet to Laptop: 848px ~ 1323px */
+  @media only screen and (max-width: 1323px) {
+  }
+
+  /* Large Phone to Tablet: 403px ~ 847px */
+  @media only screen and (max-width: 847px) {
+  }
+
+  /* Extra small phone to Phone: 0px ~ 402px */
+  @media only screen and (max-width: 402px) {
+  }
+
+  /* *************************************** */
+  /* Media Style */
+  /* *************************************** */
+  /* Default work done at 2560px */
+
+  /* Extra Large 1729px ~ 1920px */
+  @media only screen and (max-width: 1920px) {
+  }
+
+  /* Large laptop to Desktop: 1324px ~ 1728px */
+  @media only screen and (max-width: 1728px) {
+  }
+
+  /* Large Tablet to Laptop: 848px ~ 1323px */
+  @media only screen and (max-width: 1323px) {
+  }
+
+  /* Large Phone to Tablet: 403px ~ 847px */
+  @media only screen and (max-width: 847px) {
+  }
+
+  /* Extra small phone to Phone: 0px ~ 402px */
+  @media only screen and (max-width: 402px) {
   }
 `;
 

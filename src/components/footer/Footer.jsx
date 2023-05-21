@@ -47,27 +47,26 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="footer-last">
-            <div>
-              <h3 className="heading-tertiary">about</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia
-                consectetur ullam exercitationem natus, quis maxime officiis
-                quibusdam libero itaque porro numquam incidunt aliquam adipisci
-                error neque accusantium qui sapiente quisquam!
-              </p>
-            </div>
-            <div>
-              <h3 className="heading-tertiary">contact</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
-                nemo quisquam praesentium exercitationem enim aspernatur
-                laudantium dolor minima ea, velit non consequuntur corrupti
-                soluta odit et in fugiat architecto error.
-              </p>
-            </div>
+          <div>
+            <h3 className="heading-tertiary">about</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia
+              consectetur ullam exercitationem natus, quis maxime officiis
+              quibusdam libero itaque porro numquam incidunt aliquam adipisci
+              error neque accusantium qui sapiente quisquam!
+            </p>
+          </div>
+          <div>
+            <h3 className="heading-tertiary">contact</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est nemo
+              quisquam praesentium exercitationem enim aspernatur laudantium
+              dolor minima ea, velit non consequuntur corrupti soluta odit et in
+              fugiat architecto error.
+            </p>
           </div>
         </div>
+
         <div className="footer-bottom">
           <p>
             <Link to="/" className="logo">

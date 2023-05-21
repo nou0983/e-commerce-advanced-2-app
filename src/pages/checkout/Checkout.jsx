@@ -19,7 +19,7 @@ const Checkout = () => {
     fetch("/.netlify/functions/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: (totalPrice + 5) * 100 }),
+      body: JSON.stringify({ amount: (totalPrice + 5) * 100 }), 
     })
       .then((res) => {
         if (!res.ok) {
